@@ -8,24 +8,9 @@
 public class Test0050
 {
     /**
-     * sumatoria un numero "b" un numero "a" de veces  
-     */
-    private int sumatoria(int a, int b)
-    {
-        //resultado final
-        int  sumatoria = 0;
-       
-        for (int i = 0; i < a ; i++ )
-        {
-            sumatoria = sumatoria + b;
-        }
-        return sumatoria;
-    }
-
-    /**
      * realiza multiplicaciones dos números enteros positivos
      */
-    public int producto(int operador1, int operador2)
+    public int multiplicar(int operador1, int operador2)
     {
         int producto = 0;
         //si ninguno de los operandos es cero
@@ -40,25 +25,87 @@ public class Test0050
                 operador2 = aux;
             }
 
-            //ningun operador es negativo
+            int mod1 = modulo(operador1);
+            int mod2 = modulo(operador2);
+
+            for (int i = 0; i < mod1 ; i++ )
+            {
+                producto = producto + mod2;
+            }
+
+            //ningun operador1 es negativo
             if ( operador1 > 0)
             {
-                producto = sumatoria(operador1, operador2);
+                producto = (-producto);
             }
-            
-            //solo un operador es negativo
-            else if (operador2 > 0)
+
+            //solo un operador2 es negativo
+            if (operador2 > 0)
             {
-                producto = (-sumatoria(-operador1, operador2 ) );
+                producto = (-producto);
             }
-            
-            //ambos operandos son negativos
-            else 
-            {
-                producto = sumatoria (-operador1, -operador2);
-            }
-            
+
         }
         return producto;
+    }
+
+    /**
+     * realiza divisiones enteras
+     */
+    public int dividir(int dividendo, int divisor)
+    {
+        int cociente = 0;
+
+        if(dividendo != 0 && divisor !=0)   
+        {
+            int mod1 = modulo(dividendo);
+            int mod2 = modulo(divisor);
+
+            while (mod1 >= mod2)
+            {
+                mod1 = mod1 - mod2 ;
+                cociente++;
+            }
+
+            if(divisor < 0)
+            {
+                cociente = (-cociente);
+            }
+
+            if (divisor < 0)
+            {
+                cociente =(-cociente);
+            }
+        }
+        return cociente;
+    }
+
+    /**
+     * retorna el modulo del numero introducido
+     */
+    public int modulo(int num)
+    {
+        if (num < 0)
+        {
+            num = (-num);
+        }
+        return num;
+    }
+
+    /**
+     * calcula la potencia dada la base y el exponente(siempre positivo)
+     */
+    public int potencia(int base, int exponente)
+    {
+        int potencia = 0;
+        if (base != 0)
+        {
+            potencia = 1;
+            for(int i = 0; i < exponente; i++)
+            {
+                potencia = multiplicar(potencia,base);
+            }
+        }
+        return potencia;
     }
 }
