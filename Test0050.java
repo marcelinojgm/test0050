@@ -47,6 +47,7 @@ public class Test0050
 
         }
         return producto;
+
     }
 
     /**
@@ -107,5 +108,34 @@ public class Test0050
             }
         }
         return potencia;
+    }
+
+    /**
+     * realiza raices cuadradas enteras, si la raiz cuadrada no es exacta devuelve -1 e imprime un mensaje de error
+     */
+    public int raiz (int radicando)
+    {
+        int raiz = (-1);
+        if(radicando >= 0)
+        {
+            int num = 0;
+
+            while( ( potencia(num, 2) < radicando ) && (num < radicando)  )
+            { 
+                num++;
+            }
+
+            if (potencia(num, 2) == radicando)
+            {
+                raiz = num;
+            }
+        }
+
+        if(raiz == (-1))
+        {
+            System.out.println("error");
+        }
+
+        return raiz;
     }
 }
